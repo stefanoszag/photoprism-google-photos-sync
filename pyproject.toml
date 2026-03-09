@@ -1,5 +1,5 @@
 [project]
-name = "photoprism-google-home"
+name = "photoprism-google-photos-sync"
 version = "0.1.0"
 description = "Sync PhotoPrism photos to Google Photos for Google Home display"
 readme = "README.md"

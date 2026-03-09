@@ -3,9 +3,11 @@
 ![Docker](https://img.shields.io/badge/docker-available-2496ED?logo=docker)
 ![Python Version](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Build Status](https://github.com/stefanoszag/photoprism-google-home/workflows/Docker%20Build%20and%20Push/badge.svg)
-[![codecov](https://codecov.io/gh/stefanoszag/photoprism-google-home/branch/main/graph/badge.svg)](https://codecov.io/gh/stefanoszag/photoprism-google-home)
+![Build Status](https://github.com/stefanoszag/photoprism-google-photos-sync/workflows/Docker%20Build%20and%20Push/badge.svg)
+[![codecov](https://codecov.io/gh/stefanoszag/photoprism-google-photos-sync/branch/main/graph/badge.svg)](https://codecov.io/gh/stefanoszag/photoprism-google-photos-sync)
 ![Code Quality](https://img.shields.io/badge/code%20style-ruff-000000.svg)
+
+> **Note:** This is a public mirror of a private repository. The core application code, architecture, tests, and documentation are fully represented here. The CI/CD deployment pipeline (which targets a private self-hosted server) and environment-specific configuration have been intentionally excluded. All credentials are managed via environment variables as shown in [.env.example](.env.example).
 
 **Seamlessly sync your self-hosted PhotoPrism photos to Google Photos for display on Google Home devices.**
 
@@ -35,8 +37,8 @@ The fastest way to get started:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/stefanoszag/photoprism-google-home.git
-cd photoprism-google-home
+git clone https://github.com/stefanoszag/photoprism-google-photos-sync.git
+cd photoprism-google-photos-sync
 
 # 2. Copy and configure environment variables
 cp .env.example .env
@@ -57,8 +59,8 @@ docker-compose logs -f
 
 ```bash
 # 1. Clone and install dependencies
-git clone https://github.com/stefanoszag/photoprism-google-home.git
-cd photoprism-google-home
+git clone https://github.com/stefanoszag/photoprism-google-photos-sync.git
+cd photoprism-google-photos-sync
 pip install -r requirements.txt
 
 # 2. Configure environment variables
@@ -266,7 +268,7 @@ python -m uploader.token_manager status
 Pre-built multi-architecture images are available:
 
 ```bash
-docker pull stefanoszag/photoprism-google-sync:latest
+docker pull stefanoszag/photoprism-google-photos-sync:latest
 ```
 
 Supports:
@@ -311,13 +313,13 @@ Configure alert channels via environment variables.
 
 ```bash
 # Check token status
-docker-compose exec photoprism-google-sync python -m uploader.token_manager status
+docker-compose exec photoprism-google-photos-sync python -m uploader.token_manager status
 
 # Manually refresh token
-docker-compose exec photoprism-google-sync python -m uploader.token_manager refresh
+docker-compose exec photoprism-google-photos-sync python -m uploader.token_manager refresh
 
 # Validate for remote deployment
-docker-compose exec photoprism-google-sync python -m uploader.token_manager validate
+docker-compose exec photoprism-google-photos-sync python -m uploader.token_manager validate
 ```
 
 ---
@@ -409,8 +411,8 @@ This project demonstrates:
 
 ## Support
 
-- **Issues:** [GitHub Issues](https://github.com/stefanoszag/photoprism-google-home/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/stefanoszag/photoprism-google-home/discussions)
+- **Issues:** [GitHub Issues](https://github.com/stefanoszag/photoprism-google-photos-sync/issues)
+- **Discussions:** [GitHub Discussions](https://github.com/stefanoszag/photoprism-google-photos-sync/discussions)
 - **Documentation:** [docs/](docs/)
 
 For questions about setup or configuration, please open a discussion rather than an issue.
