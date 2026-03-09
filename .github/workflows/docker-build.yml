@@ -42,6 +42,7 @@ jobs:
 
   build:
     name: Build and Push Docker Image
+    if: false  # Disabled in public repo (no Docker Hub secrets); kept for demonstration
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -75,6 +76,7 @@ jobs:
 
   deploy:
     name: Deploy to LXC
+    if: false  # Disabled in public repo (no self-hosted runner); kept for demonstration
     needs: [build, test]  # Wait for both build and test to complete
     runs-on: self-hosted  # Use self-hosted runner on LXC
     steps:

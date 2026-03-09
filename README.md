@@ -7,6 +7,8 @@
 [![codecov](https://codecov.io/gh/stefanoszag/photoprism-google-photos-sync/branch/main/graph/badge.svg)](https://codecov.io/gh/stefanoszag/photoprism-google-photos-sync)
 ![Code Quality](https://img.shields.io/badge/code%20style-ruff-000000.svg)
 
+> **Note:** This is a public mirror of a private repository. The core application code, architecture, tests, and documentation are fully represented here. The CI/CD deployment pipeline (which targets a private self-hosted server) and environment-specific configuration have been intentionally excluded. All credentials are managed via environment variables as shown in [.env.example](.env.example).
+
 **Seamlessly sync your self-hosted PhotoPrism photos to Google Photos for display on Google Home devices.**
 
 A production-ready Python automation service that bridges the gap between self-hosted photo management and smart home ecosystems, featuring scheduled synchronization, multi-channel alerting, and automated deployment workflows.
