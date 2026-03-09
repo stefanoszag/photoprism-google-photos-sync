@@ -1,0 +1,28 @@
+services:
+  photoprism-google-sync:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - ./uploader/credentials.json:/app/uploader/credentials.json:ro
+      - ./uploader/token.json:/app/uploader/token.json
+    environment:
+      - PHOTOPRISM_SERVER_URL=${PHOTOPRISM_SERVER_URL}
+      - PHOTOPRISM_USERNAME=${PHOTOPRISM_USERNAME}
+      - PHOTOPRISM_PASSWORD=${PHOTOPRISM_PASSWORD}
+      - GOOGLE_PHOTOS_ALBUM_NAME=${GOOGLE_PHOTOS_ALBUM_NAME}
+      - NUM_RANDOM_ALBUMS=${NUM_RANDOM_ALBUMS}
+      - NUM_RANDOM_PHOTOS=${NUM_RANDOM_PHOTOS}
+      - RESIZE_ENABLED=${RESIZE_ENABLED:-false}
+      - RESIZE_PERCENTAGE=${RESIZE_PERCENTAGE:-100}
+      - SCHEDULER_INTERVAL_SECONDS=${SCHEDULER_INTERVAL_SECONDS:-60}
+      # Optional: Telegram alerts
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-}
+      # Optional: Email alerts
+      - SMTP_HOST=${SMTP_HOST:-}
+      - SMTP_PORT=${SMTP_PORT:-}
+      - SMTP_USER=${SMTP_USER:-}
+      - SMTP_PASSWORD=${SMTP_PASSWORD:-}
+      - ALERT_EMAIL=${ALERT_EMAIL:-}
+      # Optional: Slack alerts
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL:-}

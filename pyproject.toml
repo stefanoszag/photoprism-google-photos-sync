@@ -1,0 +1,20 @@
+[project]
+name = "photoprism-google-home"
+version = "0.1.0"
+description = "Sync PhotoPrism photos to Google Photos for Google Home display"
+readme = "README.md"
+requires-python = ">=3.9"
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_functions = "test_*"
+addopts = "-v"

@@ -1,0 +1,118 @@
+services:
+  photoprism-google-sync:
+    # Use the pre-built multi-architecture image from Docker Hub
+    image: stefanoszag/photoprism-google-sync:latest
+    
+    # Alternative: Build from source
+    # build: .
+    
+    # Restart policy: always restart unless manually stopped
+    restart: unless-stopped
+    
+    # Volume mounts for credentials and configuration
+    volumes:
+      # Google Photos API credentials (required)
+      # Download from Google Cloud Console: https://console.cloud.google.com
+      # Follow setup guide: docs/authentication.md
+      - ./uploader/credentials.json:/app/uploader/credentials.json:ro
+      
+      # Google Photos OAuth2 token (generated on first run)
+      # This file is created automatically after initial authentication
+      - ./uploader/token.json:/app/uploader/token.json
+      
+      # Optional: Custom album whitelist
+      # Uncomment to override the default whitelist
+      # Create your own CSV file with album names to include
+      # - ./downloader/data/album_whitelist.csv:/app/downloader/data/album_whitelist.csv:ro
+    
+    # Environment variables for configuration
+    environment:
+      # ============================================
+      # PhotoPrism Configuration (Required)
+      # ============================================
+      - PHOTOPRISM_SERVER_URL=https://your-photoprism.com
+      - PHOTOPRISM_USERNAME=admin
+      - PHOTOPRISM_PASSWORD=your-secure-password
+      
+      # ============================================
+      # Google Photos Configuration (Required)
+      # ============================================
+      # Name of the album in Google Photos where photos will be uploaded
+      # Album will be created automatically if it doesn't exist
+      - GOOGLE_PHOTOS_ALBUM_NAME=Photoprism
+      
+      # ============================================
+      # Photo Selection (Required)
+      # ============================================
+      # Number of random albums to select from whitelist
+      - NUM_RANDOM_ALBUMS=5
+      # Total number of random photos to upload across selected albums
+      - NUM_RANDOM_PHOTOS=10
+      
+      # ============================================
+      # Image Resizing (Optional)
+      # ============================================
+      # Resize images before upload to save storage and bandwidth
+      # - RESIZE_ENABLED=true
+      # - RESIZE_PERCENTAGE=80
+      
+      # ============================================
+      # Scheduler Configuration (Optional)
+      # ============================================
+      # How often to run the sync workflow (in seconds)
+      # Default: 86400 (24 hours)
+      # Examples:
+      #   - 3600 = 1 hour
+      #   - 21600 = 6 hours
+      #   - 86400 = 24 hours (recommended)
+      #   - 604800 = 7 days
+      - SCHEDULER_INTERVAL_SECONDS=86400
+      
+      # ============================================
+      # Optional: Email Alerts
+      # ============================================
+      # Uncomment to enable email notifications for errors and summaries
+      # - SMTP_HOST=smtp.gmail.com
+      # - SMTP_PORT=587
+      # - SMTP_USER=your-email@gmail.com
+      # - SMTP_PASSWORD=your-app-password
+      # - ALERT_EMAIL=recipient@example.com
+      
+      # ============================================
+      # Optional: Slack Alerts
+      # ============================================
+      # Uncomment to enable Slack webhook notifications
+      # Create webhook: https://api.slack.com/messaging/webhooks
+      # - SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
+      
+      # ============================================
+      # Optional: Telegram Alerts
+      # ============================================
+      # Uncomment to enable Telegram bot notifications
+      # Create bot via @BotFather on Telegram
+      # - TELEGRAM_BOT_TOKEN=your-bot-token
+      # - TELEGRAM_CHAT_ID=your-chat-id
+    
+    # Optional: Resource limits
+    # Uncomment to set memory and CPU limits
+    # deploy:
+    #   resources:
+    #     limits:
+    #       cpus: '1.0'
+    #       memory: 512M
+    #     reservations:
+    #       cpus: '0.5'
+    #       memory: 256M
+    
+    # Optional: Logging configuration
+    # logging:
+    #   driver: "json-file"
+    #   options:
+    #     max-size: "10m"
+    #     max-file: "3"
+
+# Optional: Networks
+# Uncomment if you want to use a custom network
+# networks:
+#   photoprism-net:
+#     external: true

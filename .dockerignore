@@ -1,0 +1,48 @@
+# Credentials and secrets – never ship these in the image
+uploader/credentials.json
+uploader/token.json
+.env
+.env.*
+!.env.example
+
+# Runtime data (mounted at run time instead)
+shared/
+
+# Git and CI
+.git/
+.github/
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+
+# Tests and dev tooling (not needed in production image)
+tests/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Pre-commit and config
+.pre-commit-config.yaml
+
+# Docs (optional – keeps image smaller)
+docs/
+*.md
+!README.md
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose*.yml
+
+# Misc
+.DS_Store

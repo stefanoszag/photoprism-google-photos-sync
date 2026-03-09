@@ -1,0 +1,13 @@
+requests>=2.31.0
+pandas>=2.0.0
+Pillow>=10.0.0
+google-auth>=2.22.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+google-api-python-client>=2.95.0
+schedule>=1.2.0
+
+# Test dependencies (optional for running the app)
+pytest>=7.0.0
+pytest-cov>=4.0.0
+pytest-mock>=3.10.0

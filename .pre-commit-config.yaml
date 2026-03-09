@@ -1,0 +1,30 @@
+# Pre-commit hooks for code quality
+# Install: pip install pre-commit && pre-commit install
+# Run manually: pre-commit run --all-files
+# Python hooks run only on .py files
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+        files: \.py$
+      - id: end-of-file-fixer
+        files: \.py$
+      - id: check-yaml
+        files: \.(yaml|yml)$
+      - id: check-added-large-files
+      - id: check-json
+        files: \.json$
+      - id: check-merge-conflict
+      - id: debug-statements
+        files: \.py$
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.9
+    hooks:
+      - id: ruff
+        files: \.py$
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        files: \.py$
