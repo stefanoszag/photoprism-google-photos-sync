@@ -1,7 +1,7 @@
 services:
-  photoprism-google-sync:
+  photoprism-google-photos-sync:
     # Use the pre-built multi-architecture image from Docker Hub
-    image: stefanoszag/photoprism-google-sync:latest
+    image: stefanoszag/photoprism-google-photos-sync:latest
     
     # Alternative: Build from source
     # build: .

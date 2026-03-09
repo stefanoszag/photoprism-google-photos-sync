@@ -225,7 +225,7 @@ Only albums listed here will be considered for random selection.
 
 **Build Process:**
 - Single-architecture image (linux/amd64) for LXC deployment
-- Published to Docker Hub: `stefanoszag/photoprism-google-sync:latest`
+- Published to Docker Hub: `stefanoszag/photoprism-google-photos-sync:latest`
 - Automated via GitHub Actions on main branch push
 - Auto-deployment to LXC container via self-hosted runner
 

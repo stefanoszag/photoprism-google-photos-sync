@@ -18,7 +18,7 @@
    
    # Build and push for linux/amd64 (e.g. LXC server)
    docker buildx build --platform linux/amd64 \
-     -t yourusername/photoprism-google-sync:latest \
+     -t yourusername/photoprism-google-photos-sync:latest \
      --push .
    ```
 
@@ -56,8 +56,8 @@
 
    ```yaml
    services:
-     photoprism-google-sync:
-       image: yourusername/photoprism-google-sync:latest
+     photoprism-google-photos-sync:
+       image: yourusername/photoprism-google-photos-sync:latest
        restart: unless-stopped
        volumes:
          # Required: Google Photos API credentials (must exist on host)
@@ -119,8 +119,8 @@
    docker-compose down -v
    
    # Remove old images to prevent conflicts
-   docker images | grep photoprism-google-sync  # List images
-   docker rmi $(docker images | grep photoprism-google-sync | awk '{print $3}')  # Remove all versions
+   docker images | grep photoprism-google-photos-sync  # List images
+   docker rmi $(docker images | grep photoprism-google-photos-sync | awk '{print $3}')  # Remove all versions
    
    # Clean up any dangling images and cached layers
    docker system prune -f

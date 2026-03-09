@@ -1,5 +1,5 @@
 services:
-  photoprism-google-sync:
+  photoprism-google-photos-sync:
     build: .
     restart: unless-stopped
     volumes:
